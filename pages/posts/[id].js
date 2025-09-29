@@ -2,7 +2,7 @@
 import Layout from '../../components/layout';
 
 // Import helper functions to fetch data from JSON
-import { getAllPostIds, getPostData } from '../../lib/posts-json';
+import { getAllPostIds, getPostData } from '../../lib/posts-firebase';
 
 // Import Next.js <Head> for setting metadata (title, etc.)
 import Head from 'next/head';
@@ -31,7 +31,7 @@ export async function getStaticProps({ params }) {
 // Tells Next.js which dynamic routes to pre-render at build time
 export async function getStaticPaths() {
     // Get all post IDs from JSON
-    const paths = getAllPostIds();
+    const paths = await getAllPostIds();
     return {
         paths,          // List of routes: e.g. [{ params: { id: '1' } }, ...]
         fallback: false // Any path not returned here will 404
