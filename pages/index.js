@@ -1,5 +1,5 @@
 // Import function to fetch and sort post data from JSON
-import { getSortedPostsData } from '../lib/posts-json';
+import { getSortedPostsData } from '../lib/posts-firebase';
 
 // Import <Head> for setting metadata (title, etc.)
 import Head from 'next/head';
@@ -22,7 +22,7 @@ import Date from '../components/date';
 // Runs at build time to fetch data needed for this page
 export async function getStaticProps() {
   // Get posts data (sorted alphabetically by title in your current code)
-  const allPostsData = getSortedPostsData();
+  const allPostsData = await getSortedPostsData();
 
   // Return as props so the Home component can use it
   return {
